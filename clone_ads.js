@@ -49,6 +49,9 @@ async function cloneAds() {
             // Also override the userAgent dynamically just in case Google Web Designer core checks it
             modifiedHtml = modifiedHtml.replace('<head>', '<head><script>Object.defineProperty(navigator, "userAgent", {get: function () { return "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1"; }});</script>');
 
+            // Inject Touch Emulator so that PC mouse clicks simulate mobile touch events
+            modifiedHtml = modifiedHtml.replace('<head>', '<head><script src="https://cdn.jsdelivr.net/npm/hammer-touchemulator@0.0.2/touch-emulator.js"></script><script>window.addEventListener("load", function() { TouchEmulator(); });</script>');
+
             fs.writeFileSync(path.join(dir, `${ad.name}.html`), modifiedHtml);
             console.log(`Saved ${ad.name}.html`);
         } catch (err) {
