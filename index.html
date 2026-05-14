@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImpactFrames | Rich Media Ads</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Alpine.js for interactive state -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+
+    <header class="page-header">
+        <div class="container header-content">
+            <h1 class="page-title">Where Attention Turns Into <span class="highlight-text">Action</span></h1>
+            <p class="page-subtitle">Interactive formats designed to engage, immerse and drive measurable brand impact.</p>
+            
+            <div class="intro-panel">
+                <h2>Interactive Creative Solutions Built for Engagement</h2>
+                <p>We design and deploy rich media formats that go beyond passive viewing, enabling users to interact, explore and engage with your brand in real time.</p>
+            </div>
+        </div>
+    </header>
+
+    <main id="experiences">
+        <!-- Section 1: Swipe-Based -->
+        <section class="ad-section">
+            <div class="container ad-grid">
+                <div class="ad-content" data-aos="fade-right">
+                    <div class="section-badge">01</div>
+                    <h2 class="section-title">Swipe-Based Experiences</h2>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> Designed for exploration, not interruption</li>
+                        <li><i class="fa-solid fa-check"></i> Multi-frame storytelling within a single ad unit</li>
+                        <li><i class="fa-solid fa-check"></i> Seamless product discovery through user interaction</li>
+                    </ul>
+                    
+                    <div class="impact-metrics">
+                        <div class="metric">
+                            <span class="metric-value">2.5x–4x</span>
+                            <span class="metric-label">Higher Engagement Rate<br>(vs static formats)</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">+35%</span>
+                            <span class="metric-label">Longer Dwell Time</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">+20-30%</span>
+                            <span class="metric-label">Content Recall</span>
+                        </div>
+                    </div>
+
+                    <div class="qr-container">
+                        <div class="qr-box">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://impactframes.in/bkt/v2/&color=0079FF&bgcolor=FEFEFF" alt="QR Code 1">
+                            <span>Scan to view BKT</span>
+                        </div>
+                        <div class="qr-box">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/SunscreenCetaphil/v1/&color=0079FF&bgcolor=FEFEFF" alt="QR Code 2">
+                            <span>Scan to view Cetaphil</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ad-preview" data-aos="fade-left" x-data="{ activeAd: 'ad1' }">
+                    <div class="toggle-wrapper">
+                        <div class="toggle-container">
+                            <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
+                            <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''" @click="activeAd = 'ad1'">BKT</button>
+                            <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''" @click="activeAd = 'ad2'">Cetaphil</button>
+                        </div>
+                    </div>
+                    
+                    <div class="phone-mockup dark-phone">
+                        <div class="notch"></div>
+                        <div class="speaker"></div>
+                        <div class="camera"></div>
+                        
+                        <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/bkt.html" title="BKT Ad"></iframe>
+                        <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600" src="cloned_ads/cetaphil.html" title="Cetaphil Ad"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Touch & Tap -->
+        <section class="ad-section alt-bg">
+            <div class="container ad-grid reverse">
+                <div class="ad-content" data-aos="fade-left">
+                    <div class="section-badge">02</div>
+                    <h2 class="section-title">Touch & Tap Interactions</h2>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> Every tap becomes a micro-engagement</li>
+                        <li><i class="fa-solid fa-check"></i> Interactive hotspots within creatives</li>
+                        <li><i class="fa-solid fa-check"></i> Clickable layers revealing deeper information</li>
+                    </ul>
+                    
+                    <div class="impact-metrics">
+                        <div class="metric">
+                            <span class="metric-value">1.8x–2.2x</span>
+                            <span class="metric-label">Higher CTR<br>(vs standard display)</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">+25%</span>
+                            <span class="metric-label">Interaction Depth</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                            <span class="metric-label">Stronger intent signals via action clicks</span>
+                        </div>
+                    </div>
+
+                    <div class="qr-container">
+                        <div class="qr-box">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/JungleThamma/v3/&color=0079FF&bgcolor=FEFEFF" alt="QR Code 1">
+                            <span>Scan to view JungleThamma</span>
+                        </div>
+                        <div class="qr-box">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://impactframes.in/pepe/v1/&color=0079FF&bgcolor=FEFEFF" alt="QR Code 2">
+                            <span>Scan to view Pepe</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ad-preview" data-aos="fade-right" x-data="{ activeAd: 'ad1' }">
+                    <div class="toggle-wrapper">
+                        <div class="toggle-container">
+                            <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
+                            <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''" @click="activeAd = 'ad1'">JungleThamma</button>
+                            <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''" @click="activeAd = 'ad2'">Pepe</button>
+                        </div>
+                    </div>
+
+                    <div class="phone-mockup dark-phone">
+                        <div class="notch"></div>
+                        <div class="speaker"></div>
+                        <div class="camera"></div>
+                        
+                        <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/junglethamma.html" title="JungleThamma Ad"></iframe>
+                        <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600" src="cloned_ads/pepe.html" title="Pepe Ad"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Split-Screen -->
+        <section class="ad-section">
+            <div class="container ad-grid">
+                <div class="ad-content" data-aos="fade-right">
+                    <div class="section-badge">03</div>
+                    <h2 class="section-title">Split-Screen & Dual-Format Ads</h2>
+                    <ul class="feature-list">
+                        <li><i class="fa-solid fa-check"></i> Capture attention with layered storytelling</li>
+                        <li><i class="fa-solid fa-check"></i> Video + static / interactive combinations</li>
+                        <li><i class="fa-solid fa-check"></i> Multi-message delivery within a single frame</li>
+                    </ul>
+                    
+                    <div class="impact-metrics">
+                        <div class="metric">
+                            <span class="metric-value">+30%</span>
+                            <span class="metric-label">Higher Viewability</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">+20%</span>
+                            <span class="metric-label">Message Retention</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value"><i class="fa-solid fa-bullseye"></i></span>
+                            <span class="metric-label">Stronger CTA visibility for higher actions</span>
+                        </div>
+                    </div>
+
+                    <div class="qr-container">
+                        <div class="qr-box">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/fujifilms/v1/&color=0079FF&bgcolor=FEFEFF" alt="QR Code 1">
+                            <span>Scan to view Fujifilm v1</span>
+                        </div>
+                        <div class="qr-box">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/fujifilms/v2/&color=0079FF&bgcolor=FEFEFF" alt="QR Code 2">
+                            <span>Scan to view Fujifilm v2</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ad-preview" data-aos="fade-left" x-data="{ activeAd: 'ad1' }">
+                    <div class="toggle-wrapper">
+                        <div class="toggle-container">
+                            <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
+                            <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''" @click="activeAd = 'ad1'">Fujifilm v1</button>
+                            <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''" @click="activeAd = 'ad2'">Fujifilm v2</button>
+                        </div>
+                    </div>
+
+                    <div class="phone-mockup dark-phone">
+                        <div class="notch"></div>
+                        <div class="speaker"></div>
+                        <div class="camera"></div>
+
+                        <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/fujifilm1.html" title="Fujifilm v1 Ad"></iframe>
+                        <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600" src="cloned_ads/fujifilm2.html" title="Fujifilm v2 Ad"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ImpactFrames. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
