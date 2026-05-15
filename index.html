@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ImpactFrames | Rich Media Ads</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Alpine.js for interactive state -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
+
 <body>
 
     <header class="page-header">
         <div class="container header-content">
             <h1 class="page-title">Where Attention Turns Into <span class="highlight-text">Action</span></h1>
-            <p class="page-subtitle">Interactive formats designed to engage, immerse and drive measurable brand impact.</p>
-            
+            <p class="page-subtitle">Interactive formats designed to engage, immerse and drive measurable brand impact.
+            </p>
+
             <div class="intro-panel">
                 <h2>Interactive Creative Solutions Built for Engagement</h2>
-                <p>We design and deploy rich media formats that go beyond passive viewing, enabling users to interact, explore and engage with your brand in real time.</p>
+                <p>We design and deploy rich media formats that go beyond passive viewing, enabling users to interact,
+                    explore and engage with your brand in real time.</p>
             </div>
         </div>
     </header>
@@ -39,7 +45,7 @@
                         <li><i class="fa-solid fa-check"></i> Multi-frame storytelling within a single ad unit</li>
                         <li><i class="fa-solid fa-check"></i> Seamless product discovery through user interaction</li>
                     </ul>
-                    
+
                     <div class="impact-metrics">
                         <div class="metric">
                             <span class="metric-value">2.5x–4x</span>
@@ -56,33 +62,39 @@
                     </div>
 
                     <div class="qr-container">
-                        <div class="qr-box">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://impactframes.in/bkt/v2/&color=0079FF&bgcolor=FEFEFF" alt="QR Code 1">
+                        <a href="https://impactframes.in/bkt/v2/" target="_blank" class="qr-box">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://impactframes.in/bkt/v2/&color=0079FF&bgcolor=FEFEFF"
+                                alt="QR Code 1">
                             <span>Scan to view BKT</span>
-                        </div>
-                        <div class="qr-box">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/SunscreenCetaphil/v1/&color=0079FF&bgcolor=FEFEFF" alt="QR Code 2">
+                        </a>
+                        <a href="https://onlymedia.in/ads/SunscreenCetaphil/v1/" target="_blank" class="qr-box">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/SunscreenCetaphil/v1/&color=0079FF&bgcolor=FEFEFF"
+                                alt="QR Code 2">
                             <span>Scan to view Cetaphil</span>
-                        </div>
+                        </a>
                     </div>
                 </div>
-                
+
                 <div class="ad-preview" data-aos="fade-left" x-data="{ activeAd: 'ad1' }">
                     <div class="toggle-wrapper">
                         <div class="toggle-container">
                             <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
-                            <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''" @click="activeAd = 'ad1'">BKT</button>
-                            <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''" @click="activeAd = 'ad2'">Cetaphil</button>
+                            <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
+                                @click="activeAd = 'ad1'">BKT</button>
+                            <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
+                                @click="activeAd = 'ad2'">Cetaphil</button>
                         </div>
                     </div>
-                    
+
                     <div class="phone-mockup dark-phone">
                         <div class="notch"></div>
                         <div class="speaker"></div>
                         <div class="camera"></div>
-                        
-                        <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/bkt.html" title="BKT Ad"></iframe>
-                        <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600" src="cloned_ads/cetaphil.html" title="Cetaphil Ad"></iframe>
+
+                        <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/bkt.html"
+                            title="BKT Ad"></iframe>
+                        <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600"
+                            src="cloned_ads/cetaphil.html" title="Cetaphil Ad"></iframe>
                     </div>
                 </div>
             </div>
@@ -99,7 +111,7 @@
                         <li><i class="fa-solid fa-check"></i> Interactive hotspots within creatives</li>
                         <li><i class="fa-solid fa-check"></i> Clickable layers revealing deeper information</li>
                     </ul>
-                    
+
                     <div class="impact-metrics">
                         <div class="metric">
                             <span class="metric-value">1.8x–2.2x</span>
@@ -116,23 +128,27 @@
                     </div>
 
                     <div class="qr-container">
-                        <div class="qr-box">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/JungleThamma/v3/&color=0079FF&bgcolor=FEFEFF" alt="QR Code 1">
+                        <a href="https://onlymedia.in/ads/JungleThamma/v3/" target="_blank" class="qr-box">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/JungleThamma/v3/&color=0079FF&bgcolor=FEFEFF"
+                                alt="QR Code 1">
                             <span>Scan to view JungleThamma</span>
-                        </div>
-                        <div class="qr-box">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://impactframes.in/pepe/v1/&color=0079FF&bgcolor=FEFEFF" alt="QR Code 2">
+                        </a>
+                        <a href="https://impactframes.in/pepe/v1/" target="_blank" class="qr-box">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://impactframes.in/pepe/v1/&color=0079FF&bgcolor=FEFEFF"
+                                alt="QR Code 2">
                             <span>Scan to view Pepe</span>
-                        </div>
+                        </a>
                     </div>
                 </div>
-                
+
                 <div class="ad-preview" data-aos="fade-right" x-data="{ activeAd: 'ad1' }">
                     <div class="toggle-wrapper">
                         <div class="toggle-container">
                             <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
-                            <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''" @click="activeAd = 'ad1'">JungleThamma</button>
-                            <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''" @click="activeAd = 'ad2'">Pepe</button>
+                            <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
+                                @click="activeAd = 'ad1'">JungleThamma</button>
+                            <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
+                                @click="activeAd = 'ad2'">Pepe</button>
                         </div>
                     </div>
 
@@ -140,9 +156,11 @@
                         <div class="notch"></div>
                         <div class="speaker"></div>
                         <div class="camera"></div>
-                        
-                        <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/junglethamma.html" title="JungleThamma Ad"></iframe>
-                        <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600" src="cloned_ads/pepe.html" title="Pepe Ad"></iframe>
+
+                        <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/junglethamma.html"
+                            title="JungleThamma Ad"></iframe>
+                        <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600"
+                            src="cloned_ads/pepe.html" title="Pepe Ad"></iframe>
                     </div>
                 </div>
             </div>
@@ -159,7 +177,7 @@
                         <li><i class="fa-solid fa-check"></i> Video + static / interactive combinations</li>
                         <li><i class="fa-solid fa-check"></i> Multi-message delivery within a single frame</li>
                     </ul>
-                    
+
                     <div class="impact-metrics">
                         <div class="metric">
                             <span class="metric-value">+30%</span>
@@ -176,23 +194,27 @@
                     </div>
 
                     <div class="qr-container">
-                        <div class="qr-box">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/fujifilms/v1/&color=0079FF&bgcolor=FEFEFF" alt="QR Code 1">
+                        <a href="https://onlymedia.in/ads/fujifilms/v1/" target="_blank" class="qr-box">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/fujifilms/v1/&color=0079FF&bgcolor=FEFEFF"
+                                alt="QR Code 1">
                             <span>Scan to view Fujifilm v1</span>
-                        </div>
-                        <div class="qr-box">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/fujifilms/v2/&color=0079FF&bgcolor=FEFEFF" alt="QR Code 2">
+                        </a>
+                        <a href="https://onlymedia.in/ads/fujifilms/v2/" target="_blank" class="qr-box">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/fujifilms/v2/&color=0079FF&bgcolor=FEFEFF"
+                                alt="QR Code 2">
                             <span>Scan to view Fujifilm v2</span>
-                        </div>
+                        </a>
                     </div>
                 </div>
-                
+
                 <div class="ad-preview" data-aos="fade-left" x-data="{ activeAd: 'ad1' }">
                     <div class="toggle-wrapper">
                         <div class="toggle-container">
                             <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
-                            <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''" @click="activeAd = 'ad1'">Fujifilm v1</button>
-                            <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''" @click="activeAd = 'ad2'">Fujifilm v2</button>
+                            <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
+                                @click="activeAd = 'ad1'">Fujifilm v1</button>
+                            <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
+                                @click="activeAd = 'ad2'">Fujifilm v2</button>
                         </div>
                     </div>
 
@@ -201,8 +223,10 @@
                         <div class="speaker"></div>
                         <div class="camera"></div>
 
-                        <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/fujifilm1.html" title="Fujifilm v1 Ad"></iframe>
-                        <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600" src="cloned_ads/fujifilm2.html" title="Fujifilm v2 Ad"></iframe>
+                        <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/fujifilm1.html"
+                            title="Fujifilm v1 Ad"></iframe>
+                        <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600"
+                            src="cloned_ads/fujifilm2.html" title="Fujifilm v2 Ad"></iframe>
                     </div>
                 </div>
             </div>
@@ -217,4 +241,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

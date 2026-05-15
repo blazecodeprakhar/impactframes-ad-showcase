@@ -16,10 +16,74 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.15
     };
 
+    // Helper function to animate numbers counting up
+    function animateNumbers(element) {
+        if (element.dataset.counted === 'true') return;
+        element.dataset.counted = 'true';
+        
+        if (element.querySelector('i')) return; // Skip if it contains an icon
+
+        const text = element.textContent;
+        const parts = text.split(/(\d+(?:\.\d+)?)/);
+        
+        if (parts.length === 1) return; // No numbers found
+        
+        const duration = 2000; // 2 seconds
+        const startTimestamp = performance.now();
+        
+        function step(timestamp) {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            // Ease out cubic
+            const easeProgress = 1 - Math.pow(1 - progress, 3);
+            
+            let currentText = "";
+            
+            for (let i = 0; i < parts.length; i++) {
+                if (i % 2 === 0) {
+                    currentText += parts[i];
+                } else {
+                    const match = parts[i];
+                    const isFloat = match.includes('.');
+                    const targetNum = parseFloat(match);
+                    let currentNum = targetNum * easeProgress;
+                    
+                    if (isFloat) {
+                        const decPlaces = match.split('.')[1].length;
+                        currentText += currentNum.toFixed(decPlaces);
+                    } else {
+                        let numStr = Math.floor(currentNum).toString();
+                        if (match.startsWith('0') && match.length > 1) {
+                            numStr = numStr.padStart(match.length, '0');
+                        }
+                        currentText += numStr;
+                    }
+                }
+            }
+            
+            element.textContent = currentText;
+            
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                element.textContent = text;
+            }
+        }
+        
+        window.requestAnimationFrame(step);
+    }
+
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                
+                // Trigger number animations with staggered delay
+                const numbers = entry.target.querySelectorAll('.metric-value, .section-badge');
+                numbers.forEach((num, index) => {
+                    setTimeout(() => animateNumbers(num), 300 + (index * 150));
+                });
+                
                 observer.unobserve(entry.target); // Stop observing once it's visible
             }
         });
@@ -45,5 +109,64 @@ document.addEventListener('DOMContentLoaded', () => {
         if(shape2) {
             shape2.style.transform = `translate(${mouseX * -100}px, ${mouseY * -100}px)`;
         }
+    });
+
+    // Fast & Real 3D Mouse Tilt Effect with Dynamic Shadow (Tracks entire section)
+    const adSections = document.querySelectorAll('.ad-section');
+    adSections.forEach(section => {
+        const phone = section.querySelector('.phone-mockup.dark-phone');
+        if (!phone) return;
+
+        section.addEventListener('mousemove', (e) => {
+            const rect = section.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calculate tilt degrees (responsive and fast)
+            const rotateX = ((y - centerY) / centerY) * -12;
+            const rotateY = ((x - centerX) / centerX) * 20;
+            
+            // Calculate dynamic realistic shadow
+            const shadowX = ((x - centerX) / centerX) * -30;
+            const shadowY = ((y - centerY) / centerY) * -30 + 45; // Base 45px vertical shadow
+            
+            // Fast CSS transition for crisp, lag-free trailing
+            phone.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
+            phone.style.transform = `perspective(1200px) scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            phone.style.boxShadow = `${shadowX}px ${shadowY}px 60px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.15) inset`;
+        });
+        
+        section.addEventListener('mouseleave', () => {
+            phone.style.transition = 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
+            phone.style.transform = '';
+            phone.style.boxShadow = ''; // Reset to CSS default
+        });
+    });
+
+    // Make the tilt for other elements snappy as well
+    const otherTiltElements = document.querySelectorAll('.qr-box, .intro-panel');
+    otherTiltElements.forEach(el => {
+        el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = ((y - centerY) / centerY) * -12;
+            const rotateY = ((x - centerX) / centerX) * 12;
+            
+            el.style.transition = 'transform 0.15s ease-out';
+            el.style.transform = `perspective(1000px) scale(1.04) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        
+        el.addEventListener('mouseleave', () => {
+            el.style.transition = 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
+            el.style.transform = '';
+        });
     });
 });
