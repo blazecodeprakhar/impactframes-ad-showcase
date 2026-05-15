@@ -117,29 +117,56 @@ document.addEventListener('DOMContentLoaded', () => {
         const phone = section.querySelector('.phone-mockup.dark-phone');
         if (!phone) return;
 
+        let isUsingPhone = false;
+
+        // Detect when user is interacting with the phone specifically
+        phone.addEventListener('mouseenter', () => {
+            isUsingPhone = true;
+            // Snap to flat for usability while interacting
+            phone.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
+            phone.style.transform = 'perspective(1200px) scale(1.02) rotateX(0) rotateY(0)';
+            phone.style.boxShadow = '0 25px 50px -12px rgba(0,0,0,0.5)';
+        });
+
+        phone.addEventListener('mouseleave', () => {
+            isUsingPhone = false;
+        });
+
+        let ticking = false;
+
         section.addEventListener('mousemove', (e) => {
-            const rect = section.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            // Calculate tilt degrees (responsive and fast)
-            const rotateX = ((y - centerY) / centerY) * -12;
-            const rotateY = ((x - centerX) / centerX) * 20;
-            
-            // Calculate dynamic realistic shadow
-            const shadowX = ((x - centerX) / centerX) * -30;
-            const shadowY = ((y - centerY) / centerY) * -30 + 45; // Base 45px vertical shadow
-            
-            // Fast CSS transition for crisp, lag-free trailing
-            phone.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
-            phone.style.transform = `perspective(1200px) scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            phone.style.boxShadow = `${shadowX}px ${shadowY}px 60px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.15) inset`;
+            if (isUsingPhone) return;
+
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const rect = section.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    // Calculate tilt degrees (responsive and fast)
+                    const rotateX = ((y - centerY) / centerY) * -12;
+                    const rotateY = ((x - centerX) / centerX) * 20;
+                    
+                    // Calculate dynamic realistic shadow
+                    const shadowX = ((x - centerX) / centerX) * -30;
+                    const shadowY = ((y - centerY) / centerY) * -30 + 45; // Base 45px vertical shadow
+                    
+                    // Fast CSS transition for crisp, lag-free trailing
+                    phone.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
+                    phone.style.transform = `perspective(1200px) scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    phone.style.boxShadow = `${shadowX}px ${shadowY}px 60px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.15) inset`;
+                    
+                    ticking = false;
+                });
+                ticking = true;
+            }
         });
         
         section.addEventListener('mouseleave', () => {
+            isUsingPhone = false;
             phone.style.transition = 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
             phone.style.transform = '';
             phone.style.boxShadow = ''; // Reset to CSS default
