@@ -1128,7 +1128,7 @@ h6 {
 /* Animations */
 [data-aos] {
     opacity: 0;
-    transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 [data-aos="fade-right"] {
@@ -1141,10 +1141,25 @@ h6 {
     transform-origin: right center;
 }
 
+[data-aos="fade-up"] {
+    transform: translateY(40px);
+}
+
+[data-aos="zoom-in"] {
+    transform: scale(0.92);
+}
+
 [data-aos].visible {
     opacity: 1;
-    transform: translateX(0) rotateY(0) scale(1);
+    transform: translateX(0) translateY(0) rotateY(0) scale(1);
 }
+
+/* Staggered transition delays */
+[data-aos-delay="100"] { transition-delay: 100ms; }
+[data-aos-delay="200"] { transition-delay: 200ms; }
+[data-aos-delay="300"] { transition-delay: 300ms; }
+[data-aos-delay="400"] { transition-delay: 400ms; }
+[data-aos-delay="500"] { transition-delay: 500ms; }
 
 /* CTA Section */
 .cta-section {
