@@ -196,4 +196,26 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.transform = '';
         });
     });
+
+    // Dynamic Hero Ad Rotator (randomly changes every 8 seconds)
+    const heroIframe = document.getElementById('hero-ad-iframe');
+    if (heroIframe) {
+        const heroAds = [
+            'cloned_ads/fujifilm2.html',
+            'cloned_ads/cetaphil.html',
+            'cloned_ads/pepe.html',
+            'cloned_ads/bkt.html',
+            'cloned_ads/junglethamma.html',
+            'cloned_ads/fujifilm1.html'
+        ];
+        
+        let currentSrc = heroIframe.getAttribute('src');
+        
+        setInterval(() => {
+            const availableAds = heroAds.filter(src => src !== currentSrc);
+            const randomAd = availableAds[Math.floor(Math.random() * availableAds.length)];
+            currentSrc = randomAd;
+            heroIframe.src = randomAd;
+        }, 8000);
+    }
 });
