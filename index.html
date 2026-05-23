@@ -10,7 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=19">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Alpine.js for interactive state -->
@@ -18,228 +18,504 @@
 </head>
 
 <body>
+    <div class="site-wrapper" x-data="{ mobileMenuOpen: false }">
 
-    <header class="page-header">
-        <div class="container header-content">
-            <h1 class="page-title">Where Attention Turns Into <span class="highlight-text">Action</span></h1>
-            <p class="page-subtitle">Interactive formats designed to engage, immerse and drive measurable brand impact.
-            </p>
+        <!-- Interactive Mouse-following Ambient Blur Background Elements -->
+        <div class="bg-shape-1"></div>
+        <div class="bg-shape-2"></div>
 
-            <div class="intro-panel">
-                <h2>Interactive Creative Solutions Built for Engagement</h2>
-                <p>We design and deploy rich media formats that go beyond passive viewing, enabling users to interact,
-                    explore and engage with your brand in real time.</p>
+        <!-- Premium Sticky Top Navigation Bar -->
+        <nav class="nav-bar" :class="mobileMenuOpen ? 'menu-open' : ''">
+            <div class="container nav-content">
+                <a href="#" class="logo">
+                    <span class="logo-icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                    <span class="logo-text">Impact<span class="logo-text-highlight">Frames</span></span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="desktop-menu">
+                    <div class="dropdown">
+                        <a href="#formats" class="nav-link">Ad Formats <i class="fa-solid fa-chevron-down"
+                                style="font-size: 0.8em; margin-left: 4px;"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="#swipe-based" class="dropdown-item">Swipe-Based</a>
+                            <a href="#touch-tap" class="dropdown-item">Touch & Tap</a>
+                            <a href="#split-screen" class="dropdown-item">Split-Screen</a>
+                        </div>
+                    </div>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#contact" class="cta-nav-button">Get in Touch</a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <button class="hamburger-btn" @click="mobileMenuOpen = true" aria-label="Open Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
             </div>
+        </nav>
+
+        <!-- Mobile Backdrop -->
+        <div class="mobile-backdrop" x-show="mobileMenuOpen" @click="mobileMenuOpen = false" x-transition.opacity
+            style="display: none;"></div>
+
+        <!-- Mobile Menu (Drawer) -->
+        <div class="mobile-menu" x-show="mobileMenuOpen" x-transition:enter="mobile-menu-enter-active"
+            x-transition:enter-start="mobile-menu-enter-start" x-transition:enter-end="mobile-menu-enter-end"
+            x-transition:leave="mobile-menu-leave-active" x-transition:leave-start="mobile-menu-leave-start"
+            x-transition:leave-end="mobile-menu-leave-end" style="display: none;">
+
+            <div class="mobile-menu-header"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; padding-top: 10px; border-bottom: 1px solid var(--glass-border);">
+                <a href="#" class="logo" @click="mobileMenuOpen = false">
+                    <span class="logo-icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                    <span class="logo-text">Impact<span class="logo-text-highlight">Frames</span></span>
+                </a>
+                <button class="close-menu-btn" @click="mobileMenuOpen = false" aria-label="Close Menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="mobile-dropdown" x-data="{ open: false }">
+                <button class="mobile-link"
+                    style="width: 100%; text-align: left; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;"
+                    @click="open = !open">
+                    Ad Formats
+                    <i class="fa-solid fa-chevron-down" :style="open ? 'transform: rotate(180deg);' : ''"
+                        style="font-size: 0.8em; transition: transform 0.3s ease;"></i>
+                </button>
+                <div class="mobile-dropdown-menu" :class="open ? 'open' : ''">
+                    <div class="mobile-dropdown-inner">
+                        <a href="#swipe-based" class="mobile-sublink"
+                            @click="mobileMenuOpen = false; open = false">Swipe-Based</a>
+                        <a href="#touch-tap" class="mobile-sublink"
+                            @click="mobileMenuOpen = false; open = false">Touch & Tap</a>
+                        <a href="#split-screen" class="mobile-sublink"
+                            @click="mobileMenuOpen = false; open = false">Split-Screen</a>
+                    </div>
+                </div>
+            </div>
+            <a href="#contact" class="mobile-link" @click="mobileMenuOpen = false">Contact</a>
+            <a href="#contact" class="mobile-button" @click="mobileMenuOpen = false">Get in Touch</a>
         </div>
-    </header>
 
-    <main id="experiences">
-        <!-- Section 1: Swipe-Based -->
-        <section class="ad-section">
-            <div class="container ad-grid">
-                <div class="ad-content" data-aos="fade-right">
-                    <div class="section-badge">01</div>
-                    <h2 class="section-title">Swipe-Based Experiences</h2>
-                    <ul class="feature-list">
-                        <li><i class="fa-solid fa-check"></i> Designed for exploration, not interruption</li>
-                        <li><i class="fa-solid fa-check"></i> Multi-frame storytelling within a single ad unit</li>
-                        <li><i class="fa-solid fa-check"></i> Seamless product discovery through user interaction</li>
-                    </ul>
-
-                    <div class="impact-metrics">
-                        <div class="metric">
-                            <span class="metric-value">2.5x–4x</span>
-                            <span class="metric-label">Higher Engagement Rate<br>(vs static formats)</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value">+35%</span>
-                            <span class="metric-label">Longer Dwell Time</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value">+20-30%</span>
-                            <span class="metric-label">Content Recall</span>
-                        </div>
+        <!-- Premium Interactive Hero Section -->
+        <header class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge" data-aos="fade-up">
+                        <span class="pulse-dot"></span>
+                        <span class="badge-text">Creative Innovation Suite</span>
                     </div>
-
-                    <div class="qr-container">
-                        <a href="https://impactframes.in/bkt/v2/" target="_blank" class="qr-box">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://impactframes.in/bkt/v2/&color=0079FF&bgcolor=FEFEFF"
-                                alt="QR Code 1">
-                            <span>Scan to view BKT</span>
-                        </a>
-                        <a href="https://onlymedia.in/ads/SunscreenCetaphil/v1/" target="_blank" class="qr-box">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/SunscreenCetaphil/v1/&color=0079FF&bgcolor=FEFEFF"
-                                alt="QR Code 2">
-                            <span>Scan to view Cetaphil</span>
-                        </a>
+                    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+                        Transform<br>
+                        Ads into<br>
+                        <span class="gradient-text">Experiences</span>
+                    </h1>
+                    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                        ImpactFrames delivers premium, mobile-first rich media formats that captivate audiences and
+                        drive unparalleled brand performance. Explore our interactive suite.
+                    </p>
+                    <div class="hero-cta-group" data-aos="fade-up" data-aos-delay="300">
+                        <a href="#swipe-based" class="btn-primary">Explore Formats <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#contact" class="btn-secondary">Book a Demo</a>
+                    </div>
+                    <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-item">
+                            <span class="stat-value">3x</span>
+                            <span class="stat-label">Higher Engagement</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-value">60%</span>
+                            <span class="stat-label">More Conversions</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="ad-preview" data-aos="fade-left" x-data="{ activeAd: 'ad1' }">
-                    <div class="toggle-wrapper">
-                        <div class="toggle-container">
-                            <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
-                            <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
-                                @click="activeAd = 'ad1'">BKT</button>
-                            <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
-                                @click="activeAd = 'ad2'">Cetaphil</button>
+                <div class="hero-visual" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="visual-glow"></div>
+                    <div class="floating-cards">
+                        <div class="float-card card-1">
+                            <div class="card-icon"><i class="fa-solid fa-hand-pointer"></i></div>
+                            <div class="card-text">
+                                <h4>Touch & Tap</h4>
+                                <p>Interactive Hotspots</p>
+                            </div>
+                        </div>
+                        <div class="float-card card-2">
+                            <div class="card-icon"><i class="fa-solid fa-arrows-left-right"></i></div>
+                            <div class="card-text">
+                                <h4>Swipe-Based</h4>
+                                <p>Carousel Stories</p>
+                            </div>
+                        </div>
+                        <div class="float-card card-3">
+                            <div class="card-icon"><i class="fa-solid fa-object-group"></i></div>
+                            <div class="card-text">
+                                <h4>Split-Screen</h4>
+                                <p>Dual Engagement</p>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="phone-mockup dark-phone">
-                        <div class="notch"></div>
-                        <div class="speaker"></div>
-                        <div class="camera"></div>
-
-                        <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/bkt.html"
-                            title="BKT Ad"></iframe>
-                        <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600"
-                            src="cloned_ads/cetaphil.html" title="Cetaphil Ad"></iframe>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 2: Touch & Tap -->
-        <section class="ad-section alt-bg">
-            <div class="container ad-grid reverse">
-                <div class="ad-content" data-aos="fade-left">
-                    <div class="section-badge">02</div>
-                    <h2 class="section-title">Touch & Tap Interactions</h2>
-                    <ul class="feature-list">
-                        <li><i class="fa-solid fa-check"></i> Every tap becomes a micro-engagement</li>
-                        <li><i class="fa-solid fa-check"></i> Interactive hotspots within creatives</li>
-                        <li><i class="fa-solid fa-check"></i> Clickable layers revealing deeper information</li>
-                    </ul>
-
-                    <div class="impact-metrics">
-                        <div class="metric">
-                            <span class="metric-value">1.8x–2.2x</span>
-                            <span class="metric-label">Higher CTR<br>(vs standard display)</span>
+                    <!-- Mock Phone Frame in Hero -->
+                    <div class="hero-phone">
+                        <div class="hero-phone-inner">
+                            <div class="hero-phone-screen">
+                                <div class="hero-phone-notch"></div>
+                                <div class="hero-phone-header">
+                                    <div class="mock-avatar"></div>
+                                    <div class="mock-lines">
+                                        <div class="mock-line"></div>
+                                        <div class="mock-line short"></div>
+                                    </div>
+                                </div>
+                                <div class="hero-phone-body">
+                                    <div class="mock-ad-placeholder">
+                                        <i class="fa-solid fa-bolt pulse-icon"></i>
+                                        <span>Interactive Ad</span>
+                                    </div>
+                                </div>
+                                <div class="swipe-indicator">
+                                    <i class="fa-solid fa-chevron-up bounce-icon"></i>
+                                    <span>Swipe Up</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="metric">
-                            <span class="metric-value">+25%</span>
-                            <span class="metric-label">Interaction Depth</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value"><i class="fa-solid fa-arrow-trend-up"></i></span>
-                            <span class="metric-label">Stronger intent signals via action clicks</span>
-                        </div>
-                    </div>
-
-                    <div class="qr-container">
-                        <a href="https://onlymedia.in/ads/JungleThamma/v3/" target="_blank" class="qr-box">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/JungleThamma/v3/&color=0079FF&bgcolor=FEFEFF"
-                                alt="QR Code 1">
-                            <span>Scan to view JungleThamma</span>
-                        </a>
-                        <a href="https://impactframes.in/pepe/v1/" target="_blank" class="qr-box">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://impactframes.in/pepe/v1/&color=0079FF&bgcolor=FEFEFF"
-                                alt="QR Code 2">
-                            <span>Scan to view Pepe</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="ad-preview" data-aos="fade-right" x-data="{ activeAd: 'ad1' }">
-                    <div class="toggle-wrapper">
-                        <div class="toggle-container">
-                            <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
-                            <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
-                                @click="activeAd = 'ad1'">JungleThamma</button>
-                            <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
-                                @click="activeAd = 'ad2'">Pepe</button>
-                        </div>
-                    </div>
-
-                    <div class="phone-mockup dark-phone">
-                        <div class="notch"></div>
-                        <div class="speaker"></div>
-                        <div class="camera"></div>
-
-                        <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/junglethamma.html"
-                            title="JungleThamma Ad"></iframe>
-                        <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600"
-                            src="cloned_ads/pepe.html" title="Pepe Ad"></iframe>
                     </div>
                 </div>
             </div>
-        </section>
+        </header>
 
-        <!-- Section 3: Split-Screen -->
-        <section class="ad-section">
-            <div class="container ad-grid">
-                <div class="ad-content" data-aos="fade-right">
-                    <div class="section-badge">03</div>
-                    <h2 class="section-title">Split-Screen & Dual-Format Ads</h2>
-                    <ul class="feature-list">
-                        <li><i class="fa-solid fa-check"></i> Capture attention with layered storytelling</li>
-                        <li><i class="fa-solid fa-check"></i> Video + static / interactive combinations</li>
-                        <li><i class="fa-solid fa-check"></i> Multi-message delivery within a single frame</li>
-                    </ul>
+        <main id="formats">
+            <!-- Section 1: Swipe-Based -->
+            <section id="swipe-based" class="ad-section">
+                <div class="container ad-grid">
+                    <div class="ad-content" data-aos="fade-right">
+                        <div class="section-badge">01</div>
+                        <h2 class="section-title">Swipe-Based Experiences</h2>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i> Designed for exploration, not interruption</li>
+                            <li><i class="fa-solid fa-check"></i> Multi-frame storytelling within a single ad unit</li>
+                            <li><i class="fa-solid fa-check"></i> Seamless product discovery through user interaction
+                            </li>
+                        </ul>
 
-                    <div class="impact-metrics">
-                        <div class="metric">
-                            <span class="metric-value">+30%</span>
-                            <span class="metric-label">Higher Viewability</span>
+                        <div class="impact-metrics">
+                            <div class="metric">
+                                <span class="metric-value">2.5x–4x</span>
+                                <span class="metric-label">Higher Engagement Rate<br>(vs static formats)</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">+35%</span>
+                                <span class="metric-label">Longer Dwell Time</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">+20-30%</span>
+                                <span class="metric-label">Content Recall</span>
+                            </div>
                         </div>
-                        <div class="metric">
-                            <span class="metric-value">+20%</span>
-                            <span class="metric-label">Message Retention</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value"><i class="fa-solid fa-bullseye"></i></span>
-                            <span class="metric-label">Stronger CTA visibility for higher actions</span>
+
+                        <div class="qr-container">
+                            <a href="https://impactframes.in/bkt/v2/" target="_blank" class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://impactframes.in/bkt/v2/&color=0A0A0A&bgcolor=FFFFFF"
+                                    alt="QR Code 1">
+                                <span>Scan to view BKT</span>
+                            </a>
+                            <a href="https://onlymedia.in/ads/SunscreenCetaphil/v1/" target="_blank" class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/SunscreenCetaphil/v1/&color=0A0A0A&bgcolor=FFFFFF"
+                                    alt="QR Code 2">
+                                <span>Scan to view Cetaphil</span>
+                            </a>
                         </div>
                     </div>
 
-                    <div class="qr-container">
-                        <a href="https://onlymedia.in/ads/fujifilms/v1/" target="_blank" class="qr-box">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/fujifilms/v1/&color=0079FF&bgcolor=FEFEFF"
-                                alt="QR Code 1">
-                            <span>Scan to view Fujifilm v1</span>
+                    <div class="ad-preview" data-aos="fade-left" x-data="{ activeAd: 'ad1' }">
+                        <div class="toggle-wrapper">
+                            <div class="toggle-container">
+                                <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
+                                <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
+                                    @click="activeAd = 'ad1'">BKT</button>
+                                <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
+                                    @click="activeAd = 'ad2'">Cetaphil</button>
+                            </div>
+                        </div>
+
+                        <div class="phone-mockup dark-phone">
+                            <div class="notch"></div>
+                            <div class="speaker"></div>
+                            <div class="camera"></div>
+
+                            <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/bkt.html"
+                                title="BKT Ad"></iframe>
+                            <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600"
+                                src="cloned_ads/cetaphil.html" title="Cetaphil Ad"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Touch & Tap -->
+            <section id="touch-tap" class="ad-section alt-bg">
+                <div class="container ad-grid reverse">
+                    <div class="ad-content" data-aos="fade-left">
+                        <div class="section-badge">02</div>
+                        <h2 class="section-title">Touch & Tap Interactions</h2>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i> Every tap becomes a micro-engagement</li>
+                            <li><i class="fa-solid fa-check"></i> Interactive hotspots within creatives</li>
+                            <li><i class="fa-solid fa-check"></i> Clickable layers revealing deeper information</li>
+                        </ul>
+
+                        <div class="impact-metrics">
+                            <div class="metric">
+                                <span class="metric-value">1.8x–2.2x</span>
+                                <span class="metric-label">Higher CTR<br>(vs standard display)</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">+25%</span>
+                                <span class="metric-label">Interaction Depth</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                                <span class="metric-label">Stronger intent signals via action clicks</span>
+                            </div>
+                        </div>
+
+                        <div class="qr-container">
+                            <a href="https://onlymedia.in/ads/JungleThamma/v3/" target="_blank" class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/JungleThamma/v3/&color=0A0A0A&bgcolor=FFFFFF"
+                                    alt="QR Code 1">
+                                <span>Scan to view JungleThamma</span>
+                            </a>
+                            <a href="https://impactframes.in/pepe/v1/" target="_blank" class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://impactframes.in/pepe/v1/&color=0A0A0A&bgcolor=FFFFFF"
+                                    alt="QR Code 2">
+                                <span>Scan to view Pepe</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="ad-preview" data-aos="fade-right" x-data="{ activeAd: 'ad1' }">
+                        <div class="toggle-wrapper">
+                            <div class="toggle-container">
+                                <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
+                                <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
+                                    @click="activeAd = 'ad1'">JungleThamma</button>
+                                <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
+                                    @click="activeAd = 'ad2'">Pepe</button>
+                            </div>
+                        </div>
+
+                        <div class="phone-mockup dark-phone">
+                            <div class="notch"></div>
+                            <div class="speaker"></div>
+                            <div class="camera"></div>
+
+                            <iframe x-show="activeAd === 'ad1'" width="300" height="600"
+                                src="cloned_ads/junglethamma.html" title="JungleThamma Ad"></iframe>
+                            <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600"
+                                src="cloned_ads/pepe.html" title="Pepe Ad"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Split-Screen -->
+            <section id="split-screen" class="ad-section">
+                <div class="container ad-grid">
+                    <div class="ad-content" data-aos="fade-right">
+                        <div class="section-badge">03</div>
+                        <h2 class="section-title">Split-Screen & Dual-Format Ads</h2>
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i> Capture attention with layered storytelling</li>
+                            <li><i class="fa-solid fa-check"></i> Video + static / interactive combinations</li>
+                            <li><i class="fa-solid fa-check"></i> Multi-message delivery within a single frame</li>
+                        </ul>
+
+                        <div class="impact-metrics">
+                            <div class="metric">
+                                <span class="metric-value">+30%</span>
+                                <span class="metric-label">Higher Viewability</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">+20%</span>
+                                <span class="metric-label">Message Retention</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value"><i class="fa-solid fa-bullseye"></i></span>
+                                <span class="metric-label">Stronger CTA visibility for higher actions</span>
+                            </div>
+                        </div>
+
+                        <div class="qr-container">
+                            <a href="https://onlymedia.in/ads/fujifilms/v1/" target="_blank" class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/fujifilms/v1/&color=0A0A0A&bgcolor=FFFFFF"
+                                    alt="QR Code 1">
+                                <span>Scan to view Fujifilm v1</span>
+                            </a>
+                            <a href="https://onlymedia.in/ads/fujifilms/v2/" target="_blank" class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/fujifilms/v2/&color=0A0A0A&bgcolor=FFFFFF"
+                                    alt="QR Code 2">
+                                <span>Scan to view Fujifilm v2</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="ad-preview" data-aos="fade-left" x-data="{ activeAd: 'ad1' }">
+                        <div class="toggle-wrapper">
+                            <div class="toggle-container">
+                                <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
+                                <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
+                                    @click="activeAd = 'ad1'">Fujifilm v1</button>
+                                <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
+                                    @click="activeAd = 'ad2'">Fujifilm v2</button>
+                            </div>
+                        </div>
+
+                        <div class="phone-mockup dark-phone">
+                            <div class="notch"></div>
+                            <div class="speaker"></div>
+                            <div class="camera"></div>
+
+                            <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/fujifilm1.html"
+                                title="Fujifilm v1 Ad"></iframe>
+                            <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600"
+                                src="cloned_ads/fujifilm2.html" title="Fujifilm v2 Ad"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- CTA / Contact Section -->
+        <section id="contact" class="cta-section">
+            <div class="container cta-container" data-aos="fade-up">
+                <div class="cta-content">
+                    <h2>Ready to elevate your ad formats?</h2>
+                    <p>Stop settling for passive clicks. Build dynamic, high-performing rich media creatives that drive
+                        real business impact.</p>
+
+                    <div class="contact-details">
+                        <a href="mailto:hello@impactframes.in" class="contact-item">
+                            <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="contact-info">
+                                <span class="contact-label">Email Us</span>
+                                <span class="contact-value">hello@impactframes.in</span>
+                            </div>
                         </a>
-                        <a href="https://onlymedia.in/ads/fujifilms/v2/" target="_blank" class="qr-box">
-                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/fujifilms/v2/&color=0079FF&bgcolor=FEFEFF"
-                                alt="QR Code 2">
-                            <span>Scan to view Fujifilm v2</span>
+                        <a href="#" class="contact-item">
+                            <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+                            <div class="contact-info">
+                                <span class="contact-label">Call Us</span>
+                                <span class="contact-value">+91 98765 43210</span>
+                            </div>
                         </a>
+                        <div class="contact-item">
+                            <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="contact-info">
+                                <span class="contact-label">Visit Us</span>
+                                <span class="contact-value">Mumbai, India</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="ad-preview" data-aos="fade-left" x-data="{ activeAd: 'ad1' }">
-                    <div class="toggle-wrapper">
-                        <div class="toggle-container">
-                            <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
-                            <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
-                                @click="activeAd = 'ad1'">Fujifilm v1</button>
-                            <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
-                                @click="activeAd = 'ad2'">Fujifilm v2</button>
+                <div class="cta-form-wrapper">
+                    <form class="contact-form" action="#" method="POST"
+                        onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
                         </div>
+                        <div class="form-group">
+                            <label for="email">Work Email</label>
+                            <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="3"
+                                placeholder="Tell us about your campaign goals..." required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button form-submit">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="cta-shape"></div>
+            </div>
+        </section>
+
+        <!-- Premium Footer -->
+        <footer class="site-footer">
+            <div class="footer-glow-1"></div>
+            <div class="footer-glow-2"></div>
+            
+            <div class="container footer-grid">
+                <div class="footer-brand" data-aos="fade-up">
+                    <a href="#" class="logo">
+                        <span class="logo-icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                        <span class="logo-text">Impact<span class="logo-text-highlight">Frames</span></span>
+                    </a>
+                    <p class="footer-desc">The next generation of mobile-first interactive ad formats. Designed for engagement, built for performance.</p>
+                    <div class="footer-newsletter">
+                        <h4>Stay in the Loop</h4>
+                        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                            <input type="email" placeholder="Your work email" required>
+                            <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+                        </form>
                     </div>
+                </div>
 
-                    <div class="phone-mockup dark-phone">
-                        <div class="notch"></div>
-                        <div class="speaker"></div>
-                        <div class="camera"></div>
+                <div class="footer-links-group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="footer-links">
+                        <h3>Solutions</h3>
+                        <ul>
+                            <li><a href="#swipe-based"><span>Swipe Experiences</span></a></li>
+                            <li><a href="#touch-tap"><span>Touch & Tap Ads</span></a></li>
+                            <li><a href="#split-screen"><span>Split-Screen Formats</span></a></li>
+                        </ul>
+                    </div>
+                </div>
 
-                        <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/fujifilm1.html"
-                            title="Fujifilm v1 Ad"></iframe>
-                        <iframe x-show="activeAd === 'ad2'" style="display: none;" width="300" height="600"
-                            src="cloned_ads/fujifilm2.html" title="Fujifilm v2 Ad"></iframe>
+                <div class="footer-links-group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="footer-links">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#"><span>About Us</span></a></li>
+                            <li><a href="#"><span>Case Studies</span></a></li>
+                            <li><a href="#contact"><span>Contact Us</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-social-section" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Connect</h3>
+                    <p class="social-desc">Follow our updates on creative innovations and campaigns.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                    <a href="#" class="back-to-top-btn" aria-label="Back to Top">
+                        <span>Back to top</span>
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="container bottom-content">
+                    <p>&copy; 2026 ImpactFrames. All rights reserved.</p>
+                    <div class="legal-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </footer>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 ImpactFrames. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+        <script src="script.js"></script>
+    </div>
 </body>
 
 </html>
