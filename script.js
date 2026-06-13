@@ -1,19 +1,24 @@
-document.addEventListener('DOMContentLoaded', () => {
+function initShowcase() {
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
-    // Intersection Observer for scroll animations
+    // Intersection Observer for scroll animations (snappy triggers)
     const observerOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.15
+        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.02
     };
 
     // Helper function to animate numbers counting up
@@ -29,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (parts.length === 1) return; // No numbers found
         
         const duration = 2000; // 2 seconds
-        const startTimestamp = performance.now();
+        let startTimestamp = null;
         
         function step(timestamp) {
             if (!startTimestamp) startTimestamp = timestamp;
@@ -78,10 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 
-                // Trigger number animations with staggered delay
+                // Trigger number animations with staggered delay (fast & snappy)
                 const numbers = entry.target.querySelectorAll('.metric-value, .section-badge');
                 numbers.forEach((num, index) => {
-                    setTimeout(() => animateNumbers(num), 300 + (index * 150));
+                    setTimeout(() => animateNumbers(num), 80 + (index * 60));
                 });
                 
                 observer.unobserve(entry.target); // Stop observing once it's visible
@@ -95,19 +100,26 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(element);
     });
 
-    // Dynamic mouse movement effect for background shapes
+    // Dynamic mouse movement effect for background shapes (throttled with translate3d for max performance)
+    let ambientTicking = false;
     document.addEventListener('mousemove', (e) => {
-        const mouseX = e.clientX / window.innerWidth - 0.5;
-        const mouseY = e.clientY / window.innerHeight - 0.5;
+        if (!ambientTicking) {
+            window.requestAnimationFrame(() => {
+                const mouseX = e.clientX / window.innerWidth - 0.5;
+                const mouseY = e.clientY / window.innerHeight - 0.5;
 
-        const shape1 = document.querySelector('.bg-shape-1');
-        const shape2 = document.querySelector('.bg-shape-2');
+                const shape1 = document.querySelector('.bg-shape-1');
+                const shape2 = document.querySelector('.bg-shape-2');
 
-        if(shape1) {
-            shape1.style.transform = `translate(${mouseX * 100}px, ${mouseY * 100}px)`;
-        }
-        if(shape2) {
-            shape2.style.transform = `translate(${mouseX * -100}px, ${mouseY * -100}px)`;
+                if(shape1) {
+                    shape1.style.transform = `translate3d(${mouseX * 60}px, ${mouseY * 60}px, 0)`;
+                }
+                if(shape2) {
+                    shape2.style.transform = `translate3d(${mouseX * -60}px, ${mouseY * -60}px, 0)`;
+                }
+                ambientTicking = false;
+            });
+            ambientTicking = true;
         }
     });
 
@@ -173,22 +185,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Make the tilt for other elements snappy as well
+    // Make the tilt for other elements snappy as well (throttled)
     const otherTiltElements = document.querySelectorAll('.qr-box, .intro-panel');
     otherTiltElements.forEach(el => {
+        let elTicking = false;
         el.addEventListener('mousemove', (e) => {
-            const rect = el.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = ((y - centerY) / centerY) * -12;
-            const rotateY = ((x - centerX) / centerX) * 12;
-            
-            el.style.transition = 'transform 0.15s ease-out';
-            el.style.transform = `perspective(1000px) scale(1.04) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            if (!elTicking) {
+                window.requestAnimationFrame(() => {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = ((y - centerY) / centerY) * -12;
+                    const rotateY = ((x - centerX) / centerX) * 12;
+                    
+                    el.style.transition = 'transform 0.1s ease-out';
+                    el.style.transform = `perspective(1000px) scale(1.04) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    elTicking = false;
+                });
+                elTicking = true;
+            }
         });
         
         el.addEventListener('mouseleave', () => {
@@ -197,25 +216,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Dynamic Hero Ad Rotator (randomly changes every 8 seconds)
-    const heroIframe = document.getElementById('hero-ad-iframe');
-    if (heroIframe) {
-        const heroAds = [
-            'cloned_ads/fujifilm2.html',
-            'cloned_ads/cetaphil.html',
-            'cloned_ads/pepe.html',
-            'cloned_ads/bkt.html',
-            'cloned_ads/junglethamma.html',
-            'cloned_ads/fujifilm1.html'
-        ];
+    // Dynamic Hero Video Slideshow Rotator (cycles videos every 5.5 seconds)
+    const heroSlides = document.querySelectorAll('.hero-video-slide');
+    if (heroSlides.length > 0) {
+        let currentSlideIndex = 0;
         
-        let currentSrc = heroIframe.getAttribute('src');
+        console.log("Hero slideshow initialized with", heroSlides.length, "slides.");
+        
+        // Ensure the first video plays seamlessly
+        heroSlides[0].play().catch(err => console.log("Autoplay prevented:", err));
         
         setInterval(() => {
-            const availableAds = heroAds.filter(src => src !== currentSrc);
-            const randomAd = availableAds[Math.floor(Math.random() * availableAds.length)];
-            currentSrc = randomAd;
-            heroIframe.src = randomAd;
-        }, 8000);
+            const currentSlide = heroSlides[currentSlideIndex];
+            currentSlideIndex = (currentSlideIndex + 1) % heroSlides.length;
+            const nextSlide = heroSlides[currentSlideIndex];
+            
+            console.log("Cycling hero slide to index:", currentSlideIndex, "src:", nextSlide.getAttribute('src'));
+            
+            // Start playing the next slide
+            nextSlide.play().then(() => {
+                // Transition active classes
+                nextSlide.classList.add('active');
+                currentSlide.classList.remove('active');
+                
+                // After CSS fade transition (800ms), pause and reset the old slide to free resources
+                setTimeout(() => {
+                    if (!currentSlide.classList.contains('active')) {
+                        currentSlide.pause();
+                        currentSlide.currentTime = 0;
+                    }
+                }, 1000);
+            }).catch(err => {
+                console.log("Error playing slide:", err);
+                // Fallback direct switch if play fails
+                nextSlide.classList.add('active');
+                currentSlide.classList.remove('active');
+            });
+            
+        }, 5500); // 5.5 seconds loop as requested (5-6 seconds)
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initShowcase);
+} else {
+    initShowcase();
+}
