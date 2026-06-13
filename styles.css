@@ -63,6 +63,11 @@ h6 {
     padding: 0 24px;
 }
 
+/* Responsive Helper Classes */
+.mobile-only {
+    display: none !important;
+}
+
 /* Premium Top Navigation Bar */
 .nav-bar {
     position: fixed;
@@ -2031,7 +2036,7 @@ h6 {
     .phone-mockup.dark-phone {
         transform: scale(0.9);
         transform-origin: top center;
-        margin: 0 auto;
+        margin: 0 auto -62px;
     }
 
     .ad-preview:hover .phone-mockup.dark-phone {
@@ -2039,7 +2044,7 @@ h6 {
     }
 
     .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 32px;
         text-align: left;
     }
@@ -2054,7 +2059,7 @@ h6 {
     .footer-desc {
         max-width: 100%;
         margin-bottom: 20px;
-        text-align: justify;
+        text-align: left;
     }
 
     .newsletter-form {
@@ -2081,21 +2086,74 @@ h6 {
     }
 
     .back-to-top-btn {
-        margin-top: 16px;
-        align-self: flex-start;
+        margin-top: 0;
+        margin-left: 0 !important;
     }
 
     .bottom-content {
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
         gap: 16px;
-        text-align: left;
+        text-align: center;
+    }
+
+    .legal-links {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 16px 24px;
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: inline !important;
+    }
+
+    /* Mobile QR / Links styling */
+    .qr-container {
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .qr-box {
+        flex-direction: row !important;
+        padding: 10px 20px !important;
+        border-radius: 30px !important;
+        background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%) !important;
+        border: 1px solid rgba(139, 92, 246, 0.3) !important;
+        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.05) !important;
+        gap: 8px !important;
+    }
+
+    .qr-box img {
+        display: none !important;
+    }
+
+    .qr-box span {
+        font-size: 0.85rem !important;
+        text-transform: none !important;
+        letter-spacing: 0 !important;
+        color: var(--text-main) !important;
+    }
+
+    .qr-box:hover {
+        transform: translateY(-2px) !important;
+        background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%) !important;
+        border-color: var(--accent-primary) !important;
     }
 }
 
 @media (max-width: 400px) {
     .phone-mockup.dark-phone {
         transform: scale(0.82);
+        margin: 0 auto -112px;
     }
 
     .ad-preview:hover .phone-mockup.dark-phone {
