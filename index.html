@@ -43,7 +43,6 @@
                             <a href="#swipe-based" class="dropdown-item">Swipe-Based</a>
                             <a href="#touch-tap" class="dropdown-item">Touch & Tap</a>
                             <a href="#gamification" class="dropdown-item">Gamification</a>
-                            <a href="#ar-ads" class="dropdown-item">Augmented Reality</a>
                             <a href="#split-screen" class="dropdown-item">Split-Screen</a>
                             <a href="#interactive-video" class="dropdown-item">Interactive Video</a>
                         </div>
@@ -96,7 +95,6 @@
                             @click="mobileMenuOpen = false; open = false">Swipe-Based</a>
                         <a href="#touch-tap" class="mobile-sublink" @click="mobileMenuOpen = false; open = false">Touch & Tap</a>
                         <a href="#gamification" class="mobile-sublink" @click="mobileMenuOpen = false; open = false">Gamification</a>
-                        <a href="#ar-ads" class="mobile-sublink" @click="mobileMenuOpen = false; open = false">Augmented Reality</a>
                         <a href="#split-screen" class="mobile-sublink"
                             @click="mobileMenuOpen = false; open = false">Split-Screen</a>
                         <a href="#interactive-video" class="mobile-sublink" @click="mobileMenuOpen = false; open = false">Interactive Video</a>
@@ -127,7 +125,6 @@
                     <div class="hero-cta-group" data-aos="fade-up" data-aos-delay="300">
                         <a href="#swipe-based" class="btn-primary">Explore Formats <i
                                 class="fa-solid fa-arrow-right"></i></a>
-                        <a href="#contact" class="btn-secondary">Book a Demo</a>
                     </div>
                     <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
                         <div class="stat-item">
@@ -171,17 +168,13 @@
                     <div class="hero-phone">
                         <div class="hero-phone-inner">
                             <div class="hero-phone-screen">
-                                <div class="hero-phone-notch" style="background: #111;"></div>
+                                <div class="hero-phone-notch"></div>
                                 <div class="hero-phone-body" style="height: 100%;">
                                     <div class="hero-video-slideshow">
                                         <video class="hero-video-slide active" src="BKT.mp4" preload="auto" autoplay loop muted playsinline></video>
                                         <video class="hero-video-slide" src="Cetaphil.mp4" preload="none" loop muted playsinline></video>
                                         <video class="hero-video-slide" src="Pepe.mp4" preload="none" loop muted playsinline></video>
                                     </div>
-                                </div>
-                                <div class="swipe-indicator" style="z-index: 10; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.6);">
-                                    <i class="fa-solid fa-chevron-up bounce-icon"></i>
-                                    <span>Swipe Up</span>
                                 </div>
                             </div>
                         </div>
@@ -220,15 +213,15 @@
                         </div>
 
                         <div class="qr-container">
-                            <a href="https://impactframes.in/bkt/v2/" target="_blank" class="qr-box">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://impactframes.in/bkt/v2/&color=0A0A0A&bgcolor=FFFFFF"
+                            <a href="https://impactframes.in/pepe/v1/" target="_blank" class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://impactframes.in/pepe/v1/&color=0A0A0A&bgcolor=FFFFFF"
                                     alt="QR Code 1">
-                                <span><span class="desktop-only">Scan to view </span>BKT <span class="mobile-only">Live <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></span></span>
+                                <span><span class="desktop-only">Scan to view </span>Pepe <span class="mobile-only">Live <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></span></span>
                             </a>
                             <a href="https://onlymedia.in/ads/SunscreenCetaphil/v1/" target="_blank" class="qr-box">
                                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/SunscreenCetaphil/v1/&color=0A0A0A&bgcolor=FFFFFF"
                                     alt="QR Code 2">
-                                <span><span class="desktop-only">Scan to view </span>Cetaphil <span class="mobile-only">Live <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></span></span>
+                                <span><span class="desktop-only">Scan to view </span>Sandisk <span class="mobile-only">Live <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></span></span>
                             </a>
                         </div>
                     </div>
@@ -238,9 +231,9 @@
                             <div class="toggle-container">
                                 <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
                                 <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
-                                    @click="activeAd = 'ad1'">BKT</button>
+                                    @click="activeAd = 'ad1'">Pepe</button>
                                 <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
-                                    @click="activeAd = 'ad2'">Cetaphil</button>
+                                    @click="activeAd = 'ad2'">Sandisk</button>
                             </div>
                         </div>
 
@@ -249,13 +242,11 @@
                             <div class="speaker"></div>
                             <div class="camera"></div>
 
-                            <!-- <iframe x-show="activeAd === 'ad1'" width="300" height="600" src="cloned_ads/bkt.html"
-                                title="BKT Ad"></iframe> -->
-                            <div x-show="activeAd === 'ad1'" class="bkt-video-container">
-                                <video x-init="$watch('activeAd', val => { if(val === 'ad1') $el.play(); else $el.pause(); })" src="BKT.mp4" preload="auto" autoplay loop muted playsinline></video>
+                            <div x-show="activeAd === 'ad1'" class="pepe-video-container">
+                                <video x-init="$watch('activeAd', val => { if(val === 'ad1') $el.play(); else $el.pause(); })" src="Pepe.mp4" preload="auto" autoplay loop muted playsinline></video>
                             </div>
-                            <div x-show="activeAd === 'ad2'" class="cetaphil-video-container" style="display: none;">
-                                <video x-init="$watch('activeAd', val => { if(val === 'ad2') $el.play(); else $el.pause(); })" src="Cetaphil.mp4" preload="none" loop muted playsinline></video>
+                            <div x-show="activeAd === 'ad2'" class="sandisk-video-container" style="display: none;">
+                                <video x-init="$watch('activeAd', val => { if(val === 'ad2') $el.play(); else $el.pause(); })" src="Sandisk.mp4" preload="none" loop muted playsinline></video>
                             </div>
                         </div>
                     </div>
@@ -290,15 +281,15 @@
                         </div>
 
                         <div class="qr-container">
+                            <a href="https://onlymedia.in/ads/SunscreenCetaphil/v1/" target="_blank" class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/SunscreenCetaphil/v1/&color=0A0A0A&bgcolor=FFFFFF"
+                                    alt="QR Code 1">
+                                <span><span class="desktop-only">Scan to view </span>Cetaphil <span class="mobile-only">Live <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></span></span>
+                            </a>
                             <a href="https://onlymedia.in/ads/JungleThamma/v3/" target="_blank" class="qr-box">
                                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/JungleThamma/v3/&color=0A0A0A&bgcolor=FFFFFF"
-                                    alt="QR Code 1">
-                                <span><span class="desktop-only">Scan to view </span>JungleThamma <span class="mobile-only">Live <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></span></span>
-                            </a>
-                            <a href="https://impactframes.in/pepe/v1/" target="_blank" class="qr-box">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://impactframes.in/pepe/v1/&color=0A0A0A&bgcolor=FFFFFF"
                                     alt="QR Code 2">
-                                <span><span class="desktop-only">Scan to view </span>Pepe <span class="mobile-only">Live <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></span></span>
+                                <span><span class="desktop-only">Scan to view </span>Thamma <span class="mobile-only">Live <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></span></span>
                             </a>
                         </div>
                     </div>
@@ -308,9 +299,9 @@
                             <div class="toggle-container">
                                 <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
                                 <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
-                                    @click="activeAd = 'ad1'">JungleThamma</button>
+                                    @click="activeAd = 'ad1'">Cetaphil</button>
                                 <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
-                                    @click="activeAd = 'ad2'">Pepe</button>
+                                    @click="activeAd = 'ad2'">Thamma</button>
                             </div>
                         </div>
 
@@ -319,13 +310,13 @@
                             <div class="speaker"></div>
                             <div class="camera"></div>
 
-                            <template x-if="activeAd === 'ad1'">
-                                <iframe width="300" height="600"
-                                    src="cloned_ads/junglethamma.html" title="JungleThamma Ad"></iframe>
-                            </template>
-                            <div x-show="activeAd === 'ad2'" class="pepe-video-container" style="display: none;">
-                                <video x-init="$watch('activeAd', val => { if(val === 'ad2') $el.play(); else $el.pause(); })" src="Pepe.mp4" preload="none" loop muted playsinline></video>
+                            <div x-show="activeAd === 'ad1'" class="cetaphil-video-container">
+                                <video x-init="$watch('activeAd', val => { if(val === 'ad1') $el.play(); else $el.pause(); })" src="Cetaphil.mp4" preload="auto" autoplay loop muted playsinline></video>
                             </div>
+                            <template x-if="activeAd === 'ad2'">
+                                <iframe width="300" height="600"
+                                    src="cloned_ads/junglethamma.html" title="Thamma Ad"></iframe>
+                            </template>
                         </div>
                     </div>
                 </div>
@@ -357,16 +348,20 @@
                                 <span class="metric-label">Lift in brand recall</span>
                             </div>
                         </div>
+
+                        <div class="qr-container">
+                            <a href="https://onlymedia.in" target="_blank" class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in&color=0A0A0A&bgcolor=FFFFFF"
+                                    alt="QR Code 1">
+                                <span><span class="desktop-only">Scan to view </span>Gudang <span class="mobile-only">Live <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></span></span>
+                            </a>
+                        </div>
                     </div>
 
                     <div class="ad-preview" data-aos="fade-left" x-data="{ activeAd: 'ad1' }">
                         <div class="toggle-wrapper">
-                            <div class="toggle-container">
-                                <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
-                                <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
-                                    @click="activeAd = 'ad1'">Game 1</button>
-                                <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
-                                    @click="activeAd = 'ad2'">Game 2</button>
+                            <div class="toggle-container" style="justify-content: center;">
+                                <button class="toggle-btn active" style="width: 100%;">Gudang</button>
                             </div>
                         </div>
 
@@ -375,71 +370,19 @@
                             <div class="speaker"></div>
                             <div class="camera"></div>
 
-                            <div class="blank-ad-screen">
-                                <span class="blank-ad-placeholder-text">Gamification Creative Coming Soon</span>
+                            <div class="gudang-video-container">
+                                <video src="Gudang.mp4" preload="auto" autoplay loop muted playsinline></video>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Section 4: Augmented Reality (AR) Ads -->
-            <section id="ar-ads" class="ad-section alt-bg">
+            <!-- Section 4: Split-Screen & Dual-Format Ads -->
+            <section id="split-screen" class="ad-section alt-bg">
                 <div class="container ad-grid reverse">
                     <div class="ad-content" data-aos="fade-left">
                         <div class="section-badge">04</div>
-                        <h2 class="section-title">Augmented Reality (AR) Ads</h2>
-                        <ul class="feature-list">
-                            <li><i class="fa-solid fa-check"></i> Bring the product into the user’s world</li>
-                            <li><i class="fa-solid fa-check"></i> Virtual try-ons and immersive brand experiences</li>
-                            <li><i class="fa-solid fa-check"></i> Camera-enabled engagement</li>
-                        </ul>
-
-                        <div class="impact-metrics">
-                            <div class="metric">
-                                <span class="metric-value">+70%</span>
-                                <span class="metric-label">Higher engagement vs standard video</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">+25–40%</span>
-                                <span class="metric-label">Lift in purchase intent</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">30%+</span>
-                                <span class="metric-label">Significantly higher ad recall</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="ad-preview" data-aos="fade-right" x-data="{ activeAd: 'ad1' }">
-                        <div class="toggle-wrapper">
-                            <div class="toggle-container">
-                                <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
-                                <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
-                                    @click="activeAd = 'ad1'">AR Exp 1</button>
-                                <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
-                                    @click="activeAd = 'ad2'">AR Exp 2</button>
-                            </div>
-                        </div>
-
-                        <div class="phone-mockup dark-phone">
-                            <div class="notch"></div>
-                            <div class="speaker"></div>
-                            <div class="camera"></div>
-
-                            <div class="blank-ad-screen">
-                                <span class="blank-ad-placeholder-text">AR Creative Coming Soon</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Section 5: Split-Screen & Dual-Format Ads -->
-            <section id="split-screen" class="ad-section">
-                <div class="container ad-grid">
-                    <div class="ad-content" data-aos="fade-right">
-                        <div class="section-badge">05</div>
                         <h2 class="section-title">Split-Screen & Dual-Format Ads</h2>
                         <ul class="feature-list">
                             <li><i class="fa-solid fa-check"></i> Capture attention with layered storytelling</li>
@@ -463,27 +406,27 @@
                         </div>
 
                         <div class="qr-container">
+                            <a href="https://impactframes.in/bkt/v2/" target="_blank" class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://impactframes.in/bkt/v2/&color=0A0A0A&bgcolor=FFFFFF"
+                                    alt="QR Code 1">
+                                <span><span class="desktop-only">Scan to view </span>BKT <span class="mobile-only">Live <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></span></span>
+                            </a>
                             <a href="https://onlymedia.in/ads/fujifilms/v1/" target="_blank" class="qr-box">
                                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/fujifilms/v1/&color=0A0A0A&bgcolor=FFFFFF"
-                                    alt="QR Code 1">
-                                <span><span class="desktop-only">Scan to view </span>Fujifilm v1 <span class="mobile-only">Live <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></span></span>
-                            </a>
-                            <a href="https://onlymedia.in/ads/fujifilms/v2/" target="_blank" class="qr-box">
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in/ads/fujifilms/v2/&color=0A0A0A&bgcolor=FFFFFF"
                                     alt="QR Code 2">
-                                <span><span class="desktop-only">Scan to view </span>Fujifilm v2 <span class="mobile-only">Live <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></span></span>
+                                <span><span class="desktop-only">Scan to view </span>Fuji <span class="mobile-only">Live <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></span></span>
                             </a>
                         </div>
                     </div>
 
-                    <div class="ad-preview" data-aos="fade-left" x-data="{ activeAd: 'ad1' }">
+                    <div class="ad-preview" data-aos="fade-right" x-data="{ activeAd: 'ad1' }">
                         <div class="toggle-wrapper">
                             <div class="toggle-container">
                                 <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
                                 <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
-                                    @click="activeAd = 'ad1'">Fujifilm v1</button>
+                                    @click="activeAd = 'ad1'">BKT</button>
                                 <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
-                                    @click="activeAd = 'ad2'">Fujifilm v2</button>
+                                    @click="activeAd = 'ad2'">Fuji</button>
                             </div>
                         </div>
 
@@ -492,24 +435,23 @@
                             <div class="speaker"></div>
                             <div class="camera"></div>
 
-                            <template x-if="activeAd === 'ad1'">
-                                <iframe width="300" height="600" src="cloned_ads/fujifilm1.html"
-                                    title="Fujifilm v1 Ad"></iframe>
-                            </template>
+                            <div x-show="activeAd === 'ad1'" class="bkt-video-container">
+                                <video x-init="$watch('activeAd', val => { if(val === 'ad1') $el.play(); else $el.pause(); })" src="BKT.mp4" preload="auto" autoplay loop muted playsinline></video>
+                            </div>
                             <template x-if="activeAd === 'ad2'">
-                                <iframe width="300" height="600" src="cloned_ads/fujifilm2.html"
-                                    title="Fujifilm v2 Ad"></iframe>
+                                <iframe width="300" height="600" src="cloned_ads/fujifilm1.html"
+                                    title="Fuji Ad"></iframe>
                             </template>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Section 6: Interactive Video Formats -->
-            <section id="interactive-video" class="ad-section alt-bg">
-                <div class="container ad-grid reverse">
-                    <div class="ad-content" data-aos="fade-left">
-                        <div class="section-badge">06</div>
+            <!-- Section 5: Interactive Video Formats -->
+            <section id="interactive-video" class="ad-section">
+                <div class="container ad-grid">
+                    <div class="ad-content" data-aos="fade-right">
+                        <div class="section-badge">05</div>
                         <h2 class="section-title">Interactive Video Formats</h2>
                         <ul class="feature-list">
                             <li><i class="fa-solid fa-check"></i> Video that responds to the user</li>
@@ -531,6 +473,14 @@
                                 <span class="metric-label">Improved mid-funnel consideration metrics</span>
                             </div>
                         </div>
+
+                        <div class="qr-container">
+                            <a href="https://onlymedia.in" target="_blank" class="qr-box">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://onlymedia.in&color=0A0A0A&bgcolor=FFFFFF"
+                                    alt="QR Code 1">
+                                <span><span class="desktop-only">Scan to view </span>Sandisk <span class="mobile-only">Live <i class="fa-solid fa-up-right-from-square" style="font-size: 0.8em; margin-left: 4px;"></i></span></span>
+                            </a>
+                        </div>
                     </div>
 
                     <div class="ad-preview" data-aos="fade-right" x-data="{ activeAd: 'ad1' }">
@@ -538,7 +488,7 @@
                             <div class="toggle-container">
                                 <div class="toggle-bg" :class="activeAd === 'ad2' ? 'slide-right' : 'slide-left'"></div>
                                 <button class="toggle-btn" :class="activeAd === 'ad1' ? 'active' : ''"
-                                    @click="activeAd = 'ad1'">Video 1</button>
+                                    @click="activeAd = 'ad1'">Sandisk</button>
                                 <button class="toggle-btn" :class="activeAd === 'ad2' ? 'active' : ''"
                                     @click="activeAd = 'ad2'">Video 2</button>
                             </div>
@@ -549,7 +499,10 @@
                             <div class="speaker"></div>
                             <div class="camera"></div>
 
-                            <div class="blank-ad-screen">
+                            <div x-show="activeAd === 'ad1'" class="sandisk-video-container">
+                                <video x-init="$watch('activeAd', val => { if(val === 'ad1') $el.play(); else $el.pause(); })" src="Sandisk.mp4" preload="auto" autoplay loop muted playsinline></video>
+                            </div>
+                            <div x-show="activeAd === 'ad2'" class="blank-ad-screen" style="display: none;">
                                 <span class="blank-ad-placeholder-text">Interactive Video Coming Soon</span>
                             </div>
                         </div>
@@ -566,21 +519,21 @@
                         <p class="section-subtitle" style="margin: 0 auto; max-width: 600px;">Built for the future of mobile advertising. Designed for participation, not just visibility.</p>
                     </div>
                     
-                    <div class="why-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-                        <div class="why-card intro-panel" data-aos="fade-up" data-aos-delay="100">
-                            <div class="why-icon" style="font-size: 2.5rem; color: var(--accent-primary); margin-bottom: 20px;"><i class="fa-solid fa-bolt"></i></div>
-                            <h3 style="font-size: 1.35rem; margin-bottom: 12px;">Built for Modern Engagement</h3>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">An interaction-first approach. We design for participation, ensuring your brand stands out, not just gets seen.</p>
+                    <div class="why-grid">
+                        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+                            <div class="why-icon"><i class="fa-solid fa-bolt"></i></div>
+                            <h3>Built for Modern Engagement</h3>
+                            <p>An interaction-first approach. We design for participation, ensuring your brand stands out, not just gets seen.</p>
                         </div>
-                        <div class="why-card intro-panel" data-aos="fade-up" data-aos-delay="200">
-                            <div class="why-icon" style="font-size: 2.5rem; color: var(--accent-secondary); margin-bottom: 20px;"><i class="fa-solid fa-eye"></i></div>
-                            <h3 style="font-size: 1.35rem; margin-bottom: 12px;">Attention That Sustains</h3>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Keep users engaged longer with rich, immersive formats that turn passive impressions into active brand dwell time.</p>
+                        <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+                            <div class="why-icon" style="color: var(--accent-secondary); background: rgba(236, 72, 153, 0.08);"><i class="fa-solid fa-eye"></i></div>
+                            <h3>Attention That Sustains</h3>
+                            <p>Keep users engaged longer with rich, immersive formats that turn passive impressions into active brand dwell time.</p>
                         </div>
-                        <div class="why-card intro-panel" data-aos="fade-up" data-aos-delay="300">
-                            <div class="why-icon" style="font-size: 2.5rem; color: var(--accent-glow); margin-bottom: 20px;"><i class="fa-solid fa-chart-simple"></i></div>
-                            <h3 style="font-size: 1.35rem; margin-bottom: 12px;">Measurable Engagement</h3>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Track every single swipe, tap, shake, and gesture on the creative, giving you deep intent signals instead of just basic clicks.</p>
+                        <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+                            <div class="why-icon" style="color: #3B82F6; background: rgba(59, 130, 246, 0.08);"><i class="fa-solid fa-chart-simple"></i></div>
+                            <h3>Measurable Engagement</h3>
+                            <p>Track every single swipe, tap, shake, and gesture on the creative, giving you deep intent signals instead of just basic clicks.</p>
                         </div>
                     </div>
                 </div>
@@ -591,18 +544,28 @@
         <section id="contact" class="cta-section">
             <div class="container cta-container" data-aos="fade-up">
                 <div class="cta-content">
-                    <h2>Ready to elevate your ad formats?</h2>
-                    <p>Stop settling for passive clicks. Build dynamic, high-performing rich media creatives that drive
-                        real business impact.</p>
+                    <div class="hero-badge" style="margin-bottom: 20px; background: rgba(236, 72, 153, 0.15); border-color: rgba(236, 72, 153, 0.3);">
+                        <span class="pulse-dot" style="background: #EC4899;"></span>
+                        <span class="badge-text" style="color: #EC4899; font-weight: 700;">Let's Build Together</span>
+                    </div>
+                    <h2 class="cta-title">Ready to elevate your <span class="gradient-text">ad formats?</span></h2>
+                    <p class="cta-subtitle">Stop settling for passive clicks. Build dynamic, high-performing rich media creatives that drive real business impact.</p>
 
                     <div class="contact-details">
                         <a href="mailto:connect@onlymedia.in" class="contact-item">
                             <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
                             <div class="contact-info">
-                                <span class="contact-label">Email Us</span>
+                                <span class="contact-label">Direct Email</span>
                                 <span class="contact-value">connect@onlymedia.in</span>
                             </div>
                         </a>
+                        <div class="contact-item">
+                            <div class="icon-box" style="background: rgba(236, 72, 153, 0.15); color: #EC4899;"><i class="fa-solid fa-bolt"></i></div>
+                            <div class="contact-info">
+                                <span class="contact-label">Turnaround</span>
+                                <span class="contact-value" style="color: #ffffff;">Within 24 Hours</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -622,7 +585,7 @@
                             <textarea id="message" name="message" rows="3"
                                 placeholder="Tell us about your campaign goals..." required></textarea>
                         </div>
-                        <button type="submit" class="cta-button form-submit">Send Message</button>
+                        <button type="submit" class="cta-button form-submit">Send Message <i class="fa-solid fa-paper-plane" style="margin-left: 8px;"></i></button>
                     </form>
                 </div>
 
@@ -663,19 +626,24 @@
 
                 <div class="footer-links-group">
                     <div class="footer-links">
-                        <h3>Solutions</h3>
+                        <h3>Rich Media Solutions</h3>
                         <ul>
-                            <li><a href="#formats"><span>Interactive Ad formats</span></a></li>
-                            <li><a href="#swipe-based"><span>Swipe Experiences</span></a></li>
+                            <li><a href="#swipe-based"><span>Swipe Ads</span></a></li>
+                            <li><a href="#touch-tap"><span>Touch-Tap Interactions</span></a></li>
+                            <li><a href="#gamification"><span>Gamifications Format</span></a></li>
+                            <li><a href="#split-screen"><span>Dual Format Format</span></a></li>
+                            <li><a href="#interactive-video"><span>Interactive Video Format</span></a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="footer-links-group">
                     <div class="footer-links">
-                        <h3>Programmatic</h3>
+                        <h3>Media Solutions</h3>
                         <ul>
-                            <li><a href="#"><span>Programmatic Solutions</span></a></li>
+                            <li><a href="#contact"><span>Managed Media Services</span></a></li>
+                            <li><a href="#contact"><span>Meta & Google Ads Management</span></a></li>
+                            <li><a href="#contact"><span>Programmatic Solutions</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -684,8 +652,8 @@
                     <div class="footer-links">
                         <h3>Company</h3>
                         <ul>
-                            <li><a href="#"><span>About Us</span></a></li>
-                            <li><a href="https://onlymedia.in" target="_blank"><span>OnlyMedia</span></a></li>
+                            <li><a href="#why-us"><span>About Us</span></a></li>
+                            <li><a href="https://onlymedia.in" target="_blank"><span>OnlyMedia Marketing Solutions</span></a></li>
                             <li><a href="#contact"><span>Contact us</span></a></li>
                         </ul>
                     </div>
