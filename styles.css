@@ -802,6 +802,9 @@ h6 {
     .hero-phone {
         transform: rotate(0);
     }
+    .hero-phone:hover {
+        transform: rotate(0) scale(1) !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2103,8 +2106,10 @@ h6 {
         margin: 0 auto -62px;
     }
 
+    .phone-mockup.dark-phone:hover,
     .ad-preview:hover .phone-mockup.dark-phone {
-        transform: scale(0.9);
+        transform: scale(0.9) !important;
+        box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.2) inset !important;
     }
 
     .footer-grid {
@@ -2220,8 +2225,9 @@ h6 {
         margin: 0 auto -112px;
     }
 
+    .phone-mockup.dark-phone:hover,
     .ad-preview:hover .phone-mockup.dark-phone {
-        transform: scale(0.82);
+        transform: scale(0.82) !important;
     }
 }
 
@@ -2534,5 +2540,25 @@ h6 {
         margin-top: 4px;
         width: 100%;
         max-width: 220px;
+    }
+}
+
+/* Explicitly disable 2D and 3D hover animations on phone frames for touchscreen & phone users */
+@media (hover: none), (pointer: coarse) {
+    .hero-phone:hover {
+        transform: rotate(0) scale(1) !important;
+        transition: none !important;
+    }
+
+    .phone-mockup.dark-phone:hover,
+    .ad-preview:hover .phone-mockup.dark-phone {
+        box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.2) inset !important;
+        transition: none !important;
+    }
+
+    .modern-bezel-phone:hover {
+        transform: none !important;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08) inset !important;
+        transition: none !important;
     }
 }

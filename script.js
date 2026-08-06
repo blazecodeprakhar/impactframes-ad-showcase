@@ -125,6 +125,8 @@ function initShowcase() {
 
     // Fast & Real 3D Mouse Tilt Effect with Dynamic Shadow (Tracks entire section)
     const adSections = document.querySelectorAll('.ad-section');
+    const isPhoneUser = () => window.innerWidth <= 992 || window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
     adSections.forEach(section => {
         const phone = section.querySelector('.phone-mockup.dark-phone');
         if (!phone) return;
@@ -133,6 +135,7 @@ function initShowcase() {
 
         // Detect when user is interacting with the phone specifically
         phone.addEventListener('mouseenter', () => {
+            if (isPhoneUser()) return;
             isUsingPhone = true;
             // Snap to flat for usability while interacting
             phone.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
@@ -141,12 +144,14 @@ function initShowcase() {
         });
 
         phone.addEventListener('mouseleave', () => {
+            if (isPhoneUser()) return;
             isUsingPhone = false;
         });
 
         let ticking = false;
 
         section.addEventListener('mousemove', (e) => {
+            if (isPhoneUser()) return;
             if (isUsingPhone) return;
 
             if (!ticking) {
@@ -178,11 +183,22 @@ function initShowcase() {
         });
         
         section.addEventListener('mouseleave', () => {
+            if (isPhoneUser()) return;
             isUsingPhone = false;
             phone.style.transition = 'transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
             phone.style.transform = '';
             phone.style.boxShadow = ''; // Reset to CSS default
         });
+    });
+
+    window.addEventListener('resize', () => {
+        if (isPhoneUser()) {
+            document.querySelectorAll('.phone-mockup.dark-phone').forEach(phone => {
+                phone.style.transform = '';
+                phone.style.boxShadow = '';
+                phone.style.transition = '';
+            });
+        }
     });
 
     // Make the tilt for other elements snappy as well (throttled)
