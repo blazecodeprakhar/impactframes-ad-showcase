@@ -2410,3 +2410,129 @@ h6 {
         gap: 20px;
     }
 }
+
+/* Desktop Dual Phone Showcase for Swipe-Based Section */
+.desktop-dual-showcase {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    /* Desktop-only: hide mobile QR and toggle preview in Section 1 */
+    .mobile-swipe-qr,
+    .mobile-swipe-preview {
+        display: none !important;
+    }
+
+    /* Expand Swipe-Based desktop grid to accommodate side-by-side phones */
+    .ad-grid.swipe-desktop-grid {
+        grid-template-columns: 1fr 1.35fr;
+        gap: 36px;
+    }
+
+    .desktop-dual-showcase {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 24px;
+        width: 100%;
+    }
+
+    .dual-phone-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    /* Sleek Modern Bezel Phone Mockup with side hardware buttons & punch-hole camera */
+    .modern-bezel-phone {
+        position: relative;
+        width: 220px;
+        height: 440px;
+        background: #09090b;
+        border: 8px solid #18181c;
+        border-radius: 34px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+
+    .modern-bezel-phone:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 35px 65px -15px rgba(124, 58, 237, 0.25), 0 0 0 1px rgba(124, 58, 237, 0.3) inset;
+    }
+
+    /* Protruding Side Buttons */
+    .modern-bezel-phone .side-btn {
+        position: absolute;
+        background: #24242a;
+        z-index: 1;
+    }
+
+    /* Left Edge: Volume Rocker */
+    .modern-bezel-phone .side-btn.vol-up {
+        left: -11px;
+        top: 65px;
+        width: 3px;
+        height: 26px;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    .modern-bezel-phone .side-btn.vol-down {
+        left: -11px;
+        top: 98px;
+        width: 3px;
+        height: 26px;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    /* Right Edge: Power Button */
+    .modern-bezel-phone .side-btn.power-btn {
+        right: -11px;
+        top: 82px;
+        width: 3px;
+        height: 38px;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    /* Clean Notch-Free Edge-to-Edge Screen */
+    .phone-screen-area {
+        width: 100%;
+        height: 100%;
+        border-radius: 24px;
+        overflow: hidden;
+        position: relative;
+        background: #000;
+    }
+
+    /* Standalone Circular Camera Dot (Top-Left Corner) */
+    .camera-dot-punch {
+        position: absolute;
+        top: 10px;
+        left: 12px;
+        width: 10px;
+        height: 10px;
+        background: #070709;
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        z-index: 12;
+        pointer-events: none;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .mockup-video {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        display: block;
+    }
+
+    .desktop-qr-card {
+        margin-top: 4px;
+        width: 100%;
+        max-width: 220px;
+    }
+}
