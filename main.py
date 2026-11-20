@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from fasthtml.common import *
+from fasthtml.common import FastHTML, serve
 from starlette.responses import FileResponse, Response
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -19,18 +19,14 @@ ALLOWED_ASSET_EXTS = {
 }
 EXCLUDED_FILES = {"clone_ads.js"}
 
-# Pass an in-memory key and disable SessionMiddleware so FastHTML never writes `.sesskey`
-# onto Vercel's read-only serverless filesystem.
-app, rt = fast_app(
+# Use a direct top-level `app = ...` assignment (so Vercel's static AST entrypoint check
+# detects `app`) and keep sessions disabled in memory so `.sesskey` is never written.
+app = FastHTML(
     default_hdrs=False,
-    pico=False,
-    live=False,
     sess_cls=None,
     secret_key=os.getenv("SESSION_SECRET") or os.urandom(32).hex(),
 )
-# Replace fast_app's default static catch-all so missing assets return 404 instead of 500
-# and non-public files (e.g., main.py, requirements.txt, clone_ads.js, dotfiles) stay private.
-app.routes.clear()
+rt = app.route
 
 
 def _resolve_public_asset(relative_path: str) -> Path | None:
