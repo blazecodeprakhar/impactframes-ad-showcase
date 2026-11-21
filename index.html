@@ -10,7 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=23">
+    <link rel="stylesheet" href="styles.css?v=24">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Alpine.js for interactive state -->
@@ -354,10 +354,9 @@
                             <div x-show="activeAd === 'ad1'" class="cetaphil-video-container">
                                 <video x-init="$watch('activeAd', val => { if(val === 'ad1') $el.play(); else $el.pause(); })" src="Cetaphil.mp4" preload="auto" autoplay loop muted playsinline></video>
                             </div>
-                            <template x-if="activeAd === 'ad2'">
-                                <iframe width="300" height="600"
-                                    src="cloned_ads/junglethamma.html" title="Thamma Ad"></iframe>
-                            </template>
+                            <div x-show="activeAd === 'ad2'" class="thamma-video-container" style="display: none;">
+                                <video x-init="$watch('activeAd', val => { if(val === 'ad2') $el.play(); else $el.pause(); })" src="Thamma.mp4" preload="none" loop muted playsinline></video>
+                            </div>
                         </div>
                     </div>
 
@@ -387,7 +386,7 @@
                                 <div class="side-btn power-btn"></div>
                                 <div class="phone-screen-area">
                                     <div class="camera-dot-punch"></div>
-                                    <iframe src="cloned_ads/junglethamma.html" title="Thamma Ad" style="width: 100%; height: 100%; border: none; display: block; background: #fff;"></iframe>
+                                    <video src="Thamma.mp4" preload="auto" autoplay loop muted playsinline class="mockup-video"></video>
                                 </div>
                             </div>
                             <a href="https://onlymedia.in/ads/JungleThamma/v3/" target="_blank" class="qr-box desktop-qr-card">
